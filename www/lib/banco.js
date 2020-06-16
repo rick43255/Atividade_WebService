@@ -48,3 +48,27 @@ function listar(){
     }
   });
 }
+
+
+$(document).on("change","#listarPessoas", function(){
+  var parametro = {
+    "codigo": $("option:selected",("#listarPessoas")).val()
+  }
+
+  $.ajax({
+    type:"post",
+    url:"https://wordpress-online-2.000webhostapp.com/webservice/listar-um-registro.php",
+    data:parametro,
+    dataType:"json",
+    success:function(data){
+      $("#codigo").val(data.pessoa.codigo);
+      $("#nome").val(data.pessoa.nome);
+      $("#email").val(data.pessoa.email);
+      $("#senha").val(data.pessoa.senha);
+    },
+
+    error:function(data){
+      navigator.notification.alet("Erro ao buscar registro!!!");
+    }
+  });
+});

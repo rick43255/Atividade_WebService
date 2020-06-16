@@ -72,3 +72,74 @@ $(document).on("change","#listarPessoas", function(){
     }
   });
 });
+
+function habilitarCampos(){
+  
+      $("#nome").prop("readonly",false);
+      $("#email").prop("readonly",false);
+      $("#senha").prop("readonly",false);
+}
+
+function desabilitarCampos(){
+  
+      $("#nome").prop("readonly",true);
+      $("#email").prop("readonly",true);
+      $("#senha").prop("readonly",true);
+}
+
+$(document).on("click","#editar",function(){
+  habilitarCampos();
+});
+
+$(document).on("click","#cancelar",function(){
+  desabilitarCampos();
+
+});
+
+$(document).on("click","#salvarEdit",function(){
+  var parametros= {
+    "codigo":$("#codigo").val(),
+    "nome":$("#nome").val(),
+    "email":$("#email").val(),
+    "senha":$("#senha").val()
+  }
+  $.ajax({
+    type:"post",//como enviar os dados
+    url:"https://wordpress-online-2.000webhostapp.com/webservice/atualizar.php",//para onde eviar
+    data:parametros, //o que vou eviar
+    //se der certo
+    success:function(data){
+      navigator.notification.alet(data);
+      location.reload();
+      desabilitarCampos();
+    },
+
+    //se der errado
+    error:function(data){
+      navigator.notification.alet("Erro no cadstro!!!");
+    }
+  });
+});
+
+$(document).on("click","#excluir",function(){
+  var parametros= {
+    "codigo":$("#codigo").val()
+    
+  }
+  $.ajax({
+    type:"post",//como enviar os dados
+    url:"https://wordpress-online-2.000webhostapp.com/webservice/delete.php",//para onde eviar
+    data:parametros, //o que vou eviar
+    //se der certo
+    success:function(data){
+      navigator.notification.alet(data);
+      location.reload();
+      desabilitarCampos();
+    },
+
+    //se der errado
+    error:function(data){
+      navigator.notification.alet("Erro ao excluir!!!");
+    }
+  });
+});

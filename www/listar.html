@@ -16,14 +16,34 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script>
-  
+  $(document).ready(function(){
+    listar();
+  });
   </script>
 </head>
 <body>
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <h2>Cadastro de Pessoa</h2>
+        <h2>Listar Pessoa</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="">Listar Pessoas</label>
+          <select id="listarPessoas" class="form-control"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="">Codigo</label>
+          <input type="text" class="form-control" id="codigo" readonly>
+        </div>
       </div>
     </div>
 
@@ -55,17 +75,33 @@
     </div>
 
     <div class="row">
-      <div class="col-12">
+      <div class="col-3">
         <div class="form-group">
-          <button class="btn btn-success btn-block" id="salvar">Salvar</button>
+          <button class="btn-lg btn-success btn-block botao" id="salvarEdit">Salvar</button>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-12">
+      <div class="col-3">
         <div class="form-group">
-          <button class="btn btn-primary btn-block" id="listar">Listar-lg----</button>
+          <button class="btn-lg btn-primary btn-block botao" id="editar">Editar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <button class="btn-lg btn-warning btn-block botao" id="cancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <div class="form-group">
+          <button class="btn-lg btn-danger btn-block botao" id="excluir">Excluir</button>
         </div>
       </div>
     </div>
